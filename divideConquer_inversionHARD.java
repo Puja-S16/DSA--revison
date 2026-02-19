@@ -10,7 +10,7 @@
 // Sample Input 3 : N = 3, arr[] = {5, 5, 5}
 // Sample Output 3 : 0, because all the elements of the array are the same & already in a sorted
 // manner.
-public class divideConquer_inversion {
+public class divideConquer_inversionHARD {
   public static int inversion(int arr[]) {
     return 0;
   }
