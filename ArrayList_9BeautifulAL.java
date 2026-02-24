@@ -25,10 +25,10 @@ public class ArrayList_9BeautifulAL {
     for(int i=2;i<=n;i++){
     ArrayList<Integer>temp=new ArrayList<>();
     for(Integer e:ans){
-    if(2*e<=n)temp.add(e*2);
+    if(2*e-1<=n)temp.add(e*2-1);
     }
     for(Integer e:ans){
-    if(2*e-1<=n)temp.add(e*2-1);
+    if(2*e<=n)temp.add(e*2);
     }
     ans=temp;
     }
