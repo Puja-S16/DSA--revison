@@ -6,7 +6,7 @@
   // remove middle (index)
   // size
   // print
-  
+
 public class LinkedList1 {
   public static class Node{
     int data;
@@ -188,6 +188,6 @@ public static void print(){
 
 
   public static void main(String[] args) {
-    LinkedList1 ll=new LinkedList1();
+    // LinkedList1 ll=new LinkedList1();
   }
 }

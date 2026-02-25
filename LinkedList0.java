@@ -12,6 +12,6 @@ public class LinkedList0 {
   public static Node head;
 
   public static void main(String[] args) {
-    LinkedList0 ll=new LinkedList0();
+    // LinkedList0 ll=new LinkedList0();
   }
 }
