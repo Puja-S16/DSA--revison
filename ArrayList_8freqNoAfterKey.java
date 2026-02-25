@@ -28,14 +28,12 @@ public class ArrayList_8freqNoAfterKey {
     int result =-1;
     for(int i=0;i<list.size()-1;i++){
       if(list.get(i)==key){
-        int target=list.get(i+1);
-        count=map.getOrDefault(target,0)+1;
-        map.put(target, count);
-
+        map.put(list.get(i+1), map.getOrDefault(list.get(i+1),0)+1);
+        count=map.get(list.get(i+1));
         if(count>maxCountNo){
-        maxCountNo=count;
-        result=target;
-      }
+          maxCountNo=count;
+          result=list.get(i+1);
+        }
       }
     }
     
