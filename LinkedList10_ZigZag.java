@@ -10,7 +10,7 @@ import LinkedList1.Node;
 
 public class LinkedList10_ZigZag {
   public static Node zig(Node head) {
-    if(head==null || head.next==null){
+    if (head == null || head.next == null) {
       return head;
     }
     // just like palindrome....
@@ -19,49 +19,91 @@ public class LinkedList10_ZigZag {
     // new Node and keep pointing like in mergeSort function
 
     // middle and dividing
-    Node slow=head;
-    Node fast=head.next;
+    Node slow = head;
+    Node fast = head.next;
 
-    while(fast!=null && fast.next!=null){
-      slow=slow.next;
-      fast=fast.next.next;
+    while (fast != null && fast.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
     }
-    Node curr=slow.next;
-    slow.next=null;
+    Node curr = slow.next;
+    slow.next = null;
 
     // reversing the 2nd half
-    Node prev=null;
+    Node prev = null;
     Node next;
-    while(curr!=null){
-      next=curr.next;
-      curr.next=prev;
-      prev=curr;
-      curr=next;
+    while (curr != null) {
+      next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
     }
 
     // now new node
-    Node x=new Node(100);
-    Node y=x;
+    Node x = new Node(100);
+    Node y = x;
 
-    while(head!=null && prev!=null){
-      y.next=head;
-      head=head.next;
-      y=y.next;
-      y.next=prev;
-      prev=prev.next;
-      y=y.next;
+    while (head != null && prev != null) {
+      y.next = head;
+      head = head.next;
+      y = y.next;
+      y.next = prev;
+      prev = prev.next;
+      y = y.next;
     }
-    if(head != null){
+    if (head != null) {
       y.next = head;
     }
-    if(prev!=null){
-      y.next=prev;
+    if (prev != null) {
+      y.next = prev;
     }
     return x.next;
   }
+  /****************************************************************************************** */
+  // Leetcode implementation :
+  public void reorderList(ListNode head) {
+    // just like palindrome....
+    // find middle
+    // reverse the 2nd half
+    // edit in existing LL
 
+    // middle and dividing
+    ListNode slow = head;
+    ListNode fast = head.next;
 
+    while (fast != null && fast.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    ListNode curr = slow.next;
+    slow.next = null;
 
+    // reversing the 2nd half
+    ListNode prev = null;
+    ListNode next;
+    while (curr != null) {
+      next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+    // prev points to the 2nd part that is reversed
+    ListNode x = head;
+    ListNode y = prev;
+    ListNode temp1;
+    ListNode temp2;
+    // now new node
+    while (x != null && y != null) {
+      temp1 = x.next;
+      temp2 = y.next;
 
-  // 
+      x.next = y;
+      y.next = temp1;
+
+      x = temp1;
+      y = temp2;
+
+    }
+  }
+
 }
