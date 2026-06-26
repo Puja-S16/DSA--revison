@@ -1,9 +1,19 @@
 
 // removing loop/CYCLE
 public class LinkedList7_removeLoop {
-  public void removecycle(ListNode head) {
-    ListNode slow=head;
-    ListNode fast=head;
+  public static class Node {
+    int data;
+    Node next;
+
+    // constructor
+    public Node(int data) {
+      this.data = data;
+      this.next = null;
+    }
+  }
+  public void removecycle(Node head) {
+    Node slow=head;
+    Node fast=head;
     while(fast!=null && fast.next!=null){
       slow=slow.next;
       fast=fast.next.next;

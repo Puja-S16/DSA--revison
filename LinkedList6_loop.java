@@ -1,8 +1,18 @@
 //Floyd's cycle finnding algorithm
 public class LinkedList6_loop {
-  public static boolean loop(ListNode head) {
-    ListNode slow=head;    
-    ListNode fast=head;    
+  public static class Node {
+    int data;
+    Node next;
+
+    // constructor
+    public Node(int data) {
+      this.data = data;
+      this.next = null;
+    }
+  }
+  public static boolean loop(Node head) {
+    Node slow=head;    
+    Node fast=head;    
     while(fast!=null && fast.next!=null){
       slow=slow.next;
       fast=fast.next.next;

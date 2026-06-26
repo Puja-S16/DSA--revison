@@ -6,9 +6,18 @@
 // L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
 // You may not modify the values in the list's nodes. Only nodes themselves may be changed.
 
-import LinkedList1.Node;
-
 public class LinkedList10_ZigZag {
+  public static class Node {
+    int data;
+    Node next;
+
+    // constructor
+    public Node(int data) {
+      this.data = data;
+      this.next = null;
+    }
+  }
+
   public static Node zig(Node head) {
     if (head == null || head.next == null) {
       return head;
@@ -59,28 +68,29 @@ public class LinkedList10_ZigZag {
     }
     return x.next;
   }
+
   /****************************************************************************************** */
   // Leetcode implementation :
-  public void reorderList(ListNode head) {
+  public void reorderList(Node head) {
     // just like palindrome....
     // find middle
     // reverse the 2nd half
     // edit in existing LL
 
     // middle and dividing
-    ListNode slow = head;
-    ListNode fast = head.next;
+    Node slow = head;
+    Node fast = head.next;
 
     while (fast != null && fast.next != null) {
       slow = slow.next;
       fast = fast.next.next;
     }
-    ListNode curr = slow.next;
+    Node curr = slow.next;
     slow.next = null;
 
     // reversing the 2nd half
-    ListNode prev = null;
-    ListNode next;
+    Node prev = null;
+    Node next;
     while (curr != null) {
       next = curr.next;
       curr.next = prev;
@@ -88,10 +98,10 @@ public class LinkedList10_ZigZag {
       curr = next;
     }
     // prev points to the 2nd part that is reversed
-    ListNode x = head;
-    ListNode y = prev;
-    ListNode temp1;
-    ListNode temp2;
+    Node x = head;
+    Node y = prev;
+    Node temp1;
+    Node temp2;
     // now new node
     while (x != null && y != null) {
       temp1 = x.next;

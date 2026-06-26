@@ -42,6 +42,6 @@ public class DoublyLL1 {
   // * `Node` → static nested class rakhte hain.
 
   public static void main(String[] args) {
-    DoublyLL1 ll = new DoublyLL1();
+    // DoublyLL1 ll = new DoublyLL1();
   }
 }

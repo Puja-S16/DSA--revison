@@ -2,6 +2,16 @@
 // Merge sort on linked list ...return head of sorted LL
 
 public class LinkedList9_MergeSort{
+  public static class Node {
+    int data;
+    Node next;
+
+    // constructor
+    public Node(int data) {
+      this.data = data;
+      this.next = null;
+    }
+  }
   public static Node merge(Node head){
     if(head==null || head.next==null){
       return head;
