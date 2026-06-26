@@ -7,6 +7,8 @@ public class DoublyLL2 {
 
     Node(int data) {
       this.data = data;
+      this.next = null;
+      this.prev = null;
     }
   }
 
