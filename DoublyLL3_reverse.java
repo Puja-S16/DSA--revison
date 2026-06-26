@@ -1,5 +1,6 @@
-public class DoublyLL_reverse{
-  public class Node{
+// algorithm runs in O(n) time and uses O(1) extra space
+public class DoublyLL3_reverse{
+  public static class Node{
     int data;
     Node prev;
     Node next;
@@ -10,7 +11,7 @@ public class DoublyLL_reverse{
       this.next=null;
     }
   }
-  public Node reverse(Node head){
+  public static Node reverse(Node head){
     Node curr=head;
     Node prev=null;
     Node next;
