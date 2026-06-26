@@ -94,4 +94,17 @@ public class circularLL1_singly {
     size--;
   }
 
+  public void display(){
+    if (head == null) {
+      System.out.println("empty list");
+      return;
+    }
+    Node curr=head;
+    do{
+      System.out.print(curr.data+"-->");
+      curr=curr.next;
+    }while(curr!=head);
+    System.out.print("...");
+  }
+
 }
