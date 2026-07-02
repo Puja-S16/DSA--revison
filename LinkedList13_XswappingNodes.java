@@ -4,7 +4,7 @@
 // Sample Input 1 : 1->2->3->4, x = 2, y = 4
 // Sample Output 1 : 1->4->3->2
 
-public class XLinkedList13_swappingNodes {
+public class LinkedList13_XswappingNodes {
   public static class Node {
     int data;
     Node next;
@@ -15,45 +15,6 @@ public class XLinkedList13_swappingNodes {
     }
   }
 
-  public static Node swapping(Node head, int a, int b) {
-    Node x = head;
-    Node y = head;
-
-    if (x.data == a) {
-      while (y.next.data != b) {
-        y = y.next;
-      }
-      Node temp = y.next;
-      y.next = x;
-      x = temp;
-      head = x;
-      return head;
-    }
-
-    if (x.data == b) {
-      while (y.next.data != a) {
-        y = y.next;
-      }
-      Node temp = y.next;
-      y.next = x;
-      x = temp;
-      head = x;
-      return head;
-    }
-
-    while (x.next.data != a) {
-      x = x.next;
-    }
-    while (y.next.data != b) {
-      y = y.next;
-    }
-    Node temp = y.next;
-    y.next = x;
-    x = temp;
-    head = x;
-    return head;
-  }
-
   // chat gpt :
 
   public static Node swapping2(Node head, int x, int y) {
@@ -61,13 +22,15 @@ public class XLinkedList13_swappingNodes {
     if (x == y)
       return head;
 
-    Node prevX = null, currX = head;
+    Node currX = head;
+    Node prevX = null;
     while (currX != null && currX.data != x) {
       prevX = currX;
       currX = currX.next;
     }
 
-    Node prevY = null, currY = head;
+    Node currY = head;
+    Node prevY = null;
     while (currY != null && currY.data != y) {
       prevY = currY;
       currY = currY.next;
@@ -78,14 +41,15 @@ public class XLinkedList13_swappingNodes {
 
     if (prevX != null)
       prevX.next = currY;
-    else
+    else //matlab currX-->head
       head = currY;
 
     if (prevY != null)
       prevY.next = currX;
-    else
+    else //matlab currY-->head
       head = currX;
 
+    // swapped noted ke next ko bhi thik se point kro
     Node temp = currX.next;
     currX.next = currY.next;
     currY.next = temp;

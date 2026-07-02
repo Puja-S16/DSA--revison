@@ -1,3 +1,4 @@
+// Question 2
 // Delete N Nodes After M Nodes of a Linked List
 
 // We have a linked list and two integers M and N.
