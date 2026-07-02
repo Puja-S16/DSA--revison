@@ -20,32 +20,38 @@ public class LinkedList12_delNafterMnodes {
       this.next = null;
     }
   }
-
-  public static void delete(Node temp) {
-    if (temp.next == null || temp.next.next == null) {
-      temp.next = null;
-    } else {
-      temp.next = temp.next.next;
-    }
-  }
-
   public static Node del(int m, int n, Node head) {
-    if(head==null) return null;
-    if(m==0) return null;
-    if(n==0) return head;
-    Node curr=head;
-    while(curr!=null){
-      for(int i=1;i<m && curr!=null;i++){
-        curr=curr.next;
-      }
-      if(curr==null) break;
-      Node temp=curr.next;
-      for(int i=0;i<n && temp!=null;i++){
-        temp=temp.next;
-      }
-      curr.next=temp;
-      curr=curr.next;
+    if (head == null) return null;
+    if (m == 0) return null;
+    if (n == 0) return head;
+
+    Node curr = head;
+
+    while (curr != null) {
+
+        // Keep M nodes
+        for (int i = 1; i < m && curr != null; i++) {
+            curr = curr.next;
+        }
+
+        if (curr == null)
+            return head;
+
+        // First node to be deleted
+        Node temp = curr.next;
+
+        // Skip N nodes
+        for (int i = 0; i < n && temp != null; i++) {
+            temp = temp.next;
+        }
+
+        // Connect kept part with remaining part
+        curr.next = temp;
+
+        // Move to next block
+        curr = curr.next;
     }
+
     return head;
-  }
+}
 }
