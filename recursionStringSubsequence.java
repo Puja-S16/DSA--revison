@@ -27,7 +27,7 @@ public class recursionStringSubsequence {
 
   }
 
-  public static void Usubsequence(String str, int i, String x, HashSet set) {
+  public static void Usubsequence(String str, int i, String x, HashSet<String> set) {
     if (i == str.length()) {
       if (!set.contains(x)) {
         System.out.print(x + " ");
@@ -42,7 +42,7 @@ public class recursionStringSubsequence {
 
   }
 
-  public static int Ucountsubsequence(String str, int i, String x, HashSet set) {
+  public static int Ucountsubsequence(String str, int i, String x, HashSet<String> set) {
     if (i == str.length()) {
       if (!set.contains(x)) {
         set.add(x);
