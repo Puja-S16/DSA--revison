@@ -35,6 +35,7 @@ public class Queue_3LinkedList {
       int value = front.data;
       front = front.next;
 
+      // in case of 1 node
       if (front == null) {
         rear = null;
       }
