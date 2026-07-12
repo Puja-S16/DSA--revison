@@ -1,6 +1,6 @@
 // Queue using 2 stacks
 import java.util.Stack;
-public class Queue_4twoStack {
+public class Queue_4twoStack2 {
   static class Queue{
     private Stack<Integer> s1=new Stack<>();
     private Stack<Integer> s2=new Stack<>();
@@ -9,7 +9,7 @@ public class Queue_4twoStack {
       // 1. add->O(n), remove and peek-->O(1)
       // 1. add->O(1), remove and peek-->O(n)
 
-    // method 1
+    // method 2
 
     // isEmpty
     public boolean isEmpty(){
@@ -18,18 +18,7 @@ public class Queue_4twoStack {
 
     // add
     public void enqueue(int data){
-      if(s1.isEmpty()){
-        s1.push(data);
-        return;
-      }
-      // s1 se transfer to s2, then add data and then from s2 to s1.
-      while(!s1.isEmpty()){
-        s2.push(s1.pop());
-      }
       s1.push(data);
-      while(!s2.isEmpty()){
-        s1.push(s2.pop());
-      }
     }
 
     // remove
@@ -37,7 +26,19 @@ public class Queue_4twoStack {
       if(s1.isEmpty()){
         return -1;
       }
-      return s1.pop();
+      // s1-->s2 until only one elem remains.... return that....s2-->s1
+      int data=-1;
+      while(!s1.isEmpty()){
+        data=s1.pop();
+        if(s1.isEmpty()){
+          break;
+        }
+        s2.push(data);
+      }
+      while(!s2.isEmpty()){
+        s1.push(s2.pop());
+      }
+      return data;
     }
 
     // peek
@@ -45,7 +46,16 @@ public class Queue_4twoStack {
       if(s1.isEmpty()){
         return -1;
       }
-      return s1.peek();
+      // s1-->s2 until only one elem remains.... return that....s2-->s1
+      int data=-1;
+      while(!s1.isEmpty()){
+        data=s1.pop();
+        s2.push(data);
+      }
+      while(!s2.isEmpty()){
+        s1.push(s2.pop());
+      }
+      return data;
     }
 
   }
