@@ -2,30 +2,30 @@
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class Deque_2Stack {
-  static class Stack{
-    private Deque<Integer> s=new LinkedList<>();
+public class Deque_3Queue {
+  static class Queue{
+    private Deque<Integer> q=new LinkedList<>();
 
-    // push
-    public void push(int data){
-      s.addLast(data);
+    // add
+    public void add(int data){
+      q.addLast(data);
       return;
     }
-    // pop
-    public int pop(){
+    // remove
+    public int remove(){
       if(!isEmpty())
-        return s.removeLast();
+        return q.removeFirst();
       else return -1;
     }
     // peek
     public int peek(){
       if(!isEmpty())
-        return s.getLast();
+        return q.getFirst();
       else return -1;
     }
     // isEmpty
     public boolean isEmpty(){
-      return s.isEmpty();
+      return q.isEmpty();
     }
 
   }
