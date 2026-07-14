@@ -1,4 +1,4 @@
-// stack using Deque
+// queue using double ended queue
 import java.util.Deque;
 import java.util.LinkedList;
 
