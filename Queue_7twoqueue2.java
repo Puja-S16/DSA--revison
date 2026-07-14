@@ -2,7 +2,7 @@
 import java.util.Queue;
 import java.util.LinkedList;
 
-public class Queue_5twoqueue1 {
+public class Queue_7twoqueue2 {
   static class Stack{
     private Queue<Integer> q1=new LinkedList<>();
     private Queue<Integer> q2=new LinkedList<>();
@@ -11,7 +11,7 @@ public class Queue_5twoqueue1 {
       // 1. push->O(n), pop and peek-->O(1)
       // 2. push->O(1), pop and peek-->O(n)
 
-    // method 1
+    // method 2
 
     // isEmpty
     public boolean isEmpty(){
@@ -20,24 +20,12 @@ public class Queue_5twoqueue1 {
 
     // add
     public void push(int data){
-      // dono mein se jo bhi queue mein elem ho-->transfer to other, add elem then pull back elems
+      // dono mein se jo bhi queue mein elem ho waha daal do.
       // agar dono khali h toh kahi bhi daalo
       if(!q1.isEmpty()){
-        while (!q1.isEmpty()) {
-          q2.add(q1.remove());
-        }
         q1.add(data);
-        while(!q2.isEmpty()){
-          q1.add(q2.remove());
-        }
       }else{
-        while (!q2.isEmpty()) {
-          q1.add(q2.remove());
-        }
         q2.add(data);
-        while(!q1.isEmpty()){
-          q2.add(q1.remove());
-        }
       }
     }
 
@@ -46,12 +34,20 @@ public class Queue_5twoqueue1 {
       if(isEmpty()){
         return -1;
       }
-      // jismein bhi elem hai...remove the 1st elem.
+      // jismein bhi elem hai...transfer to another, except last one. no need to tranfer back.
       int top=-1;
       if(!q1.isEmpty()){
-        top=q1.remove();
+        while(!q1.isEmpty()){
+          top=q1.remove();
+          if(q1.isEmpty()) break;
+          q2.add(top);
+        }
       }else{
-        top=q2.remove();
+        while(!q2.isEmpty()){
+          top=q2.remove();
+          if(q2.isEmpty()) break;
+          q1.add(top);
+        }
       }
       return top;
     }
@@ -61,14 +57,21 @@ public class Queue_5twoqueue1 {
       if(isEmpty()){
         return -1;
       }
-      // jismein bhi elem hai...return the 1st elem.
+      // jismein bhi elem hai...transfer to another. no need to tranfer back.
       int top=-1;
       if(!q1.isEmpty()){
-        top=q1.peek();
+        while(!q1.isEmpty()){
+          top=q1.remove();
+          q2.add(top);
+        }
       }else{
-        top=q2.peek();
+        while(!q2.isEmpty()){
+          top=q2.remove();
+          q1.add(top);
+        }
       }
       return top;
     }
+
   }
 }
